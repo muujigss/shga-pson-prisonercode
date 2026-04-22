@@ -3,7 +3,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AuthProvider, useAuth } from '@/context/AuthContext';
-import { SafetyCertificateOutlined, LockOutlined } from '@ant-design/icons';
+import { SafetyCertificateOutlined, LockOutlined, GlobalOutlined } from '@ant-design/icons';
+import { Dropdown, MenuProps, Button } from 'antd';
+import { LanguageProvider, useTranslation, Language } from '@/context/LanguageContext';
 
 function LoginForm() {
   const [code, setCode] = useState('');
@@ -12,6 +14,7 @@ function LoginForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const { login } = useAuth();
+  const { t, language, setLanguage } = useTranslation();
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -20,7 +23,7 @@ function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (code.length !== 6) {
-      setError('6 оронтой код оруулна уу');
+      setError(t('login.errorLength'));
       return;
     }
 
@@ -31,7 +34,7 @@ function LoginForm() {
       await login(code);
       router.push('/dashboard');
     } catch (err: any) {
-      setError(err?.message || 'Код буруу эсвэл идэвхгүй байна');
+      setError(err?.message || t('login.errorInvalid'));
     } finally {
       setLoading(false);
     }
@@ -43,15 +46,37 @@ function LoginForm() {
     setError('');
   };
 
+  const items: MenuProps['items'] = [
+    { key: 'mn', label: 'Монгол' },
+    { key: 'en', label: 'English' },
+    { key: 'ru', label: 'Русский' },
+    { key: 'zh', label: '中文' },
+  ];
+
   return (
-    <div className="login-container">
+    <div className="login-container relative">
+      <div className="absolute top-4 right-4 z-10">
+        <Dropdown 
+          menu={{ 
+            items, 
+            onClick: (e) => setLanguage(e.key as Language),
+            selectedKeys: [language]
+          }} 
+          placement="bottomRight"
+        >
+          <Button icon={<GlobalOutlined />} type="text" style={{ color: 'white' }}>
+            {(items.find(item => item?.key === language) as any)?.label || 'Монгол'}
+          </Button>
+        </Dropdown>
+      </div>
+
       <form className="login-card" onSubmit={handleSubmit}>
         <div className="login-icon">
           <SafetyCertificateOutlined />
         </div>
 
-        <h2 className="login-title">Хоригдогчийн мэдээлэл</h2>
-        <p className="login-subtitle">Нэг удаагийн кодоо оруулж нэвтэрнэ үү</p>
+        <h2 className="login-title">{t('login.title')}</h2>
+        <p className="login-subtitle">{t('login.subtitle')}</p>
 
         {error && <div className="login-error">{error}</div>}
 
@@ -61,7 +86,7 @@ function LoginForm() {
             type="text"
             inputMode="numeric"
             className="login-input"
-            placeholder="6 оронтой нэг удаагийн код"
+            placeholder={t('login.placeholder')}
             value={code}
             onChange={handleCodeChange}
             maxLength={6}
@@ -75,7 +100,7 @@ function LoginForm() {
           className="login-btn"
           disabled={loading || code.length !== 6}
         >
-          {loading ? 'Нэвтэрч байна...' : 'Нэвтрэх'}
+          {loading ? t('login.buttonLoading') : t('login.buttonSubmit')}
         </button>
       </form>
     </div>
@@ -83,9 +108,5 @@ function LoginForm() {
 }
 
 export default function LoginPage() {
-  return (
-    <AuthProvider>
-      <LoginForm />
-    </AuthProvider>
-  );
+  return <LoginForm />;
 }

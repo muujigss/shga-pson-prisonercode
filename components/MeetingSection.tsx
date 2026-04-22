@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
+import { useTranslation } from '@/context/LanguageContext';
 import { AuditOutlined } from '@ant-design/icons';
 
 export default function MeetingSection() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     api('/prisoner-code-auth/meetings')
@@ -20,7 +23,7 @@ export default function MeetingSection() {
   }
 
   if (!data) {
-    return <div className="empty-state">Өгөгдөл байхгүй</div>;
+    return <div className="empty-state">{t('meeting.noData')}</div>;
   }
 
   return (
@@ -29,9 +32,9 @@ export default function MeetingSection() {
         <table className="data-table">
           <thead>
             <tr>
-              <th>Эхэлсэн огноо</th>
-              <th>Дуусан огноо</th>
-              <th>Уулзсан хүмүүс</th>
+              <th>{t('meeting.startDate')}</th>
+              <th>{t('meeting.endDate')}</th>
+              <th>{t('meeting.participants')}</th>
             </tr>
           </thead>
           <tbody>
@@ -48,22 +51,22 @@ export default function MeetingSection() {
         <div className="legal-header">
           <AuditOutlined className="legal-icon" />
           <div>
-            <h3>Уулзалт, холбоо барих эрхийн хуулийн зохицуулалт</h3>
+            <h3>{t('meeting.legalTitle')}</h3>
           </div>
         </div>
 
         <div className="legal-content">
-          <strong>Зүйл 198.3 Нээлттэй хорих анги - Энгийн зэрэглэл</strong>
+          <strong>{t('meeting.article198_3_title')}</strong>
           <br /><br />
-          Нээлттэй хорих ангийн энгийн зэрэглэлд ял эдэлж байгаа хоригдол 30 хоногт нэг удаа удаан хугацааны уулзалт хийж болох бөгөөд түр хугацааны уулзалт хийх, захидал илгээх, илгээмж авах, утсаар ярих тоог хязгаарлахгүй.
+          {t('meeting.article198_3_text')}
           <br /><br />
-          <strong>Зүйл 198.4 Нээлттэй хорих анги - Тусгай зэрэглэл</strong>
+          <strong>{t('meeting.article198_4_title')}</strong>
           <br /><br />
-          Нээлттэй хорих ангийн тусгай зэрэглэлд ял эдэлж байгаа хоригдол 7 хоногт нэг удаа түр, 45 хоногт нэг удаа удаан хугацааны уулзалт хийж, 7 хоногт нэг удаа илгээмж авч, нэг удаа утсаар ярьж болох бөгөөд захидал илгээх тоог хязгаарлахгүй.
+          {t('meeting.article198_4_text')}
           <br /><br />
-          <strong>Зүйл 199.4 Хаалттай хорих анги - Энгийн зэрэглэл</strong>
+          <strong>{t('meeting.article199_4_title')}</strong>
           <br /><br />
-          Хаалттай хорих ангийн энгийн зэрэглэлд ял эдэлж байгаа хоригдол нь 60 хоногт нэг удаа түр, 90 хоногт нэг удаа удаан хугацааны уулзалт хийж, 30 хоногт нэг удаа илгээмж авч, нэг удаа утсаар ярьж болно.
+          {t('meeting.article199_4_text')}
         </div>
       </div>
     </div>

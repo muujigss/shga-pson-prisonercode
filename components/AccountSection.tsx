@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
+import { useTranslation } from '@/context/LanguageContext';
 
 export default function AccountSection() {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     api('/prisoner-code-auth/account-book')
@@ -19,7 +22,7 @@ export default function AccountSection() {
   }
 
   if (!data || data.length === 0) {
-    return <div className="empty-state">Өгөгдөл байхгүй</div>;
+    return <div className="empty-state">{t('account.noData')}</div>;
   }
 
   const formatMoney = (val: number) => {
@@ -32,11 +35,11 @@ export default function AccountSection() {
       <table className="data-table">
         <thead>
           <tr>
-            <th style={{ width: 60 }}>№</th>
-            <th>Огноо</th>
-            <th style={{ textAlign: 'right' }}>Зарлага</th>
-            <th style={{ textAlign: 'right' }}>Орлого</th>
-            <th style={{ textAlign: 'right' }}>Үлдэгдэл</th>
+            <th style={{ width: 60 }}>{t('account.index')}</th>
+            <th>{t('account.date')}</th>
+            <th style={{ textAlign: 'right' }}>{t('account.spending')}</th>
+            <th style={{ textAlign: 'right' }}>{t('account.income')}</th>
+            <th style={{ textAlign: 'right' }}>{t('account.balance')}</th>
           </tr>
         </thead>
         <tbody>

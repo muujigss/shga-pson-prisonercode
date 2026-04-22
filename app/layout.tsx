@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: "Хоригдогчийн мэдээллийн систем",
 };
 
+import { Providers } from "./providers";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -13,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="mn">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
