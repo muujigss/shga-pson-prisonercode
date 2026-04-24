@@ -55,7 +55,7 @@ function LoginForm() {
 
   return (
     <div className="login-container relative">
-      <div className="absolute top-4 right-4 z-10">
+      {/* <div className="absolute top-4 right-4 z-10">
         <Dropdown 
           menu={{ 
             items, 
@@ -68,7 +68,7 @@ function LoginForm() {
             {(items.find(item => item?.key === language) as any)?.label || 'Монгол'}
           </Button>
         </Dropdown>
-      </div>
+      </div> */}
 
       <form className="login-card" onSubmit={handleSubmit}>
         <div className="login-icon">

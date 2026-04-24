@@ -11,6 +11,7 @@ import {
   TeamOutlined,
   FileTextOutlined,
   LogoutOutlined,
+  BookOutlined,
 } from '@ant-design/icons';
 import SentenceSection from '@/components/SentenceSection';
 import AccountSection from '@/components/AccountSection';
@@ -18,6 +19,7 @@ import OffenceSection from '@/components/OffenceSection';
 import HealthSection from '@/components/HealthSection';
 import MeetingSection from '@/components/MeetingSection';
 import ComplaintSection from '@/components/ComplaintSection';
+import LegalSection from '@/components/LegalSection';
 
 
 
@@ -26,7 +28,7 @@ import { Dropdown, MenuProps, Button } from 'antd';
 import { GlobalOutlined } from '@ant-design/icons';
 
 function DashboardContent({ children }: { children?: React.ReactNode }) {
-  const [activeMenu, setActiveMenu] = useState('sentence');
+  const [activeMenu, setActiveMenu] = useState('legal');
   const { prisoner, isLoading, logout } = useAuth();
   const router = useRouter();
   const { t, language, setLanguage } = useTranslation();
@@ -51,17 +53,19 @@ function DashboardContent({ children }: { children?: React.ReactNode }) {
 
   const renderSection = () => {
     switch (activeMenu) {
+      case 'legal': return <LegalSection />;
       case 'sentence': return <SentenceSection />;
       case 'account': return <AccountSection />;
       case 'offence': return <OffenceSection />;
       case 'health': return <HealthSection />;
       case 'meeting': return <MeetingSection />;
       case 'complaint': return <ComplaintSection />;
-      default: return <SentenceSection />;
+      default: return <LegalSection />;
     }
   };
 
   const menuItems = [
+    { id: 'legal', label: t('dashboard.menu.legal'), icon: <BookOutlined /> },
     { id: 'sentence', label: t('dashboard.menu.sentence'), icon: <BankOutlined /> },
     { id: 'account', label: t('dashboard.menu.account'), icon: <DollarOutlined /> },
     { id: 'offence', label: t('dashboard.menu.offence'), icon: <WarningOutlined /> },

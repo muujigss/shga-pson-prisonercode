@@ -15,7 +15,8 @@
       "offence": "Offence",
       "health": "Health",
       "meeting": "Meeting",
-      "complaint": "Complaint"
+      "complaint": "Complaint",
+      "legal": "Legal Information"
     },
     "logout": "Logout",
     "headerBadge": "Prisoner System"
@@ -268,5 +269,125 @@
   "yesNo": {
     "Тийм": "Yes",
     "Үгүй": "No"
+  },
+  "legal": {
+    "title": "LAWS AND REGULATIONS TO BE INTRODUCED TO NEW PRISONERS",
+    "intro": "Introduced Article 210 of the Law of Mongolia on Court Decision Enforcement regarding prisoner rights, Article 211 on prisoner duties, and other related laws and regulations.",
+    "rights": {
+      "title": "210.1 A prisoner shall enjoy the following rights:",
+      "item1": "210.1.1 To receive information on the conditions, regulations, rights, duties, and restrictions of imprisonment",
+      "item2": "210.1.2 To submit applications and complaints to any organization or official regarding issues concerning themselves through the prison administration",
+      "item3": "210.1.3 To receive advocacy and legal assistance",
+      "item4": "210.1.4 To engage in scientific, literary, and artistic creation at a designated place by the prison administration, covering their own expenses",
+      "item5": "210.1.5 To receive medical assistance",
+      "item6": "210.1.6 To have long-term meetings with family members and short-term meetings with others, to communicate via landline and letters, receive parcels, and send/receive money transfers through their own account as specified in this law",
+      "item7": "210.1.7 To subscribe to daily newspapers and magazines at their own expense, and to use the prison library free of charge",
+      "item8": "210.1.8 To continue receiving previously established pensions and allowances, and to establish pensions and allowances specified by law if they meet the legal requirements",
+      "item9": "210.1.9 To demand humane treatment from prison officials and authorized personnel, and not to be treated in a cruel, inhuman, or degrading manner",
+      "item10": "210.1.10 To have their personal security protected",
+      "item11": "210.1.11 To be free from any experiments that may pose a risk to their health, regardless of whether they have consented",
+      "item12": "210.1.12 To purchase food, groceries, household items, and other essential items in the permitted quantities according to the procedures specified in this law",
+      "item13": "210.1.13 To perform religious rituals",
+      "item14": "210.1.14 To enroll in distance learning at a university or college at their own expense",
+      "item15": "210.1.15 To notify family members about the location and contact information of the assigned prison"
+    },
+    "duties": {
+      "title": "211.1 A prisoner shall bear the following duties:",
+      "item1": "211.1.1 To strictly comply with the laws and regulations to be followed in the prison, the rules and regulations approved by the authorized official in accordance with them, and the lawful demands made by the prison administration and officials",
+      "item2": "211.1.2 To follow the scheduled activities set by the prison administration",
+      "item3": "211.1.3 To mandatory perform the tasks assigned by the prison officials, and strictly observe the rules of labor protection and safety",
+      "item4": "211.1.4 To participate in training organized in accordance with established procedures",
+      "item5": "211.1.5 To protect their health, follow doctors advice and requirements, and pay the related costs if they intentionally or fraudulently cause illness or injury to their health or body",
+      "item6": "211.1.6 To use property, labor tools, and equipment in their possession for their intended purpose and not to damage them",
+      "item7": "211.1.7 Not to urge, provoke, organize, or take active action or inaction to commit crimes or offenses",
+      "item8": "211.1.8 To treat prison officials, authorized personnel, other prisoners, and other persons in the prison with respect;",
+      "item9": "211.1.9 To observe hygiene and sanitation requirements.",
+      "desc1": "211.2 It is prohibited to sit-in, go on a hunger strike, use or keep mobile phones, and use or keep cash, currency, and valuables in prison.",
+      "desc2": "211.3 When exercising the rights specified in this law, the prisoner is obliged not to violate this law, the internal rules of the prison, and the rights and legitimate interests of other prisoners and prison officials.",
+      "desc3": "211.4 A foreign citizen serving a prison sentence, in addition to enjoying the rights and bearing the duties specified in this article, has the right to meet and communicate with the staff of the Diplomatic Mission of their country through the consular unit of the central state administrative body in charge of foreign affairs."
+    },
+    "meetings": {
+      "title": "Law on Court Decision Enforcement, Article 213. Meetings and communication of prisoners with others",
+      "item1": "213.1 A prisoner may have a long-term meeting with a spouse, child, biological and parents-in-law, biological sibling, grandparent, and grandchildren living together in one family, and a short-term meeting with other persons under appropriate supervision.",
+      "item2": "213.2 The head of the prison shall determine the duration of short-term meetings up to 3 hours and long-term meetings up to 72 hours, and the relevant costs shall be borne by the prisoner or the person requesting the long-term meeting.",
+      "item3": "213.3 A person meeting for a long time shall have legal documents proving that they are a family member.",
+      "item4": "213.4 The authorized official of the prison shall inspect the prisoner's letters and parcels to ensure the safety of the prison and the prisoner.",
+      "item5": "213.5 A prisoner's single phone call duration shall not exceed 5 minutes.",
+      "item6": "213.6 A prisoner shall bear the costs of sending letters, making phone calls, and having long-term meetings."
+    },
+    "communication": {
+      "title": "Prisoner communication with others (From the internal rules of the prison)",
+      "item1": "18.1 When a prisoner communicates with an official, they shall state their position or rank, introduce their full name, the article and paragraph of the Criminal Code they were sentenced under, and briefly and clearly express their requests and complaints.",
+      "item2": "18.2 Prisoners shall address each other respectfully like citizens, using \"You\" (formal), and communicate culturally without using profane words when communicating with others.",
+      "item3": "18.3 When communicating with a foreign citizen prisoner, the culture and customs of that country shall be respected."
+    },
+    "rewards": {
+      "title": "Law on Court Decision Enforcement, Article 223. Rewarding prisoners",
+      "item1": "223.1.1 increase the number of short and long-term meetings specified in this law by one each per 45 days;",
+      "item2": "223.1.2 grant reward days in accordance with the procedure specified by law;",
+      "item3": "223.1.3 reward with items of value not prohibited by the internal rules of the prison."
+    },
+    "search": {
+      "title": "Law on Court Decision Enforcement, Article 232. Inspection and search of prisoner's body, belongings, and prison cell",
+      "item1": "232.1 Officials may inspect and search the prisoner's body, premises, and immediate surroundings at any time.",
+      "item2": "232.2 The inspection and search of the prisoner's body shall be performed by an official of the same sex as the prisoner."
+    },
+    "allowed": {
+      "title": "Items permitted and prohibited for prisoners (From the internal rules of the prison)",
+      "item1": "7.1.1 sanitary items (toothpaste, toothbrush, hand/face and laundry soap, towel, razor, small 1-function nail clipper, face/hand cream, wet wipes, toilet paper, sanitary pads for female prisoners, cosmetics)",
+      "item2": "7.1.2 simple wristwatch",
+      "item3": "7.1.3 no more than 5 newspapers, books, magazines, except those promoting murder, violence, and pornography.",
+      "item4": "7.1.4 uniform clothes provided by the prison and a change of underwear, woolen pants, shirt.",
+      "item5": "7.1.5 sports suit /one set/",
+      "item6": "7.1.6 1 winter woolen hat and summer peaked cap.",
+      "item7": "7.1.7 photographs of family members (no more than 5 pieces)",
+      "item8": "7.1.8 medicine provided with the doctor's permission in the dose to be used on that day",
+      "item9": "7.1.9 no more than 20 cigarettes (cigarettes).",
+      "item10": "7.1.10 1 plastic cup for drinking water with a capacity of no more than 250 ml.",
+      "item11": "7.1.11 for elderly and disabled prisoners, their prosthesis and orthopedic equipment.",
+      "desc1": "7.2 Except for those specified in 7.1 of this regulation, it is prohibited for a prisoner to keep items on their body and in the prison cell, and other items shall be stored in the storage unit.",
+      "desc2": "7.3 Provision 7.1.9 of this regulation does not apply to a prisoner serving a sentence in a special unit of a closed prison, and provision 7.1.10 does not apply to other prisoners.",
+      "desc3": "7.4 Prisoners shall not be provided with conditions and opportunities to practice bodybuilding and self-defense."
+    },
+    "schedule": {
+      "title": "Scheduled activities in prison (From the internal rules of the prison)",
+      "item1": "13.1 The head of the prison shall approve the schedule to be followed in the prison.",
+      "item2": "13.2 The schedule shall reflect all activities from waking up in the morning, maintaining sanitation, training and socialization work, labor, eating, participating in partial and general registration, free time, to resting, and all prisoners must participate.",
+      "item3": "13.3 After the prisoner wakes up in the morning, maintains sanitation, and makes their bed, they are taken out of the prison cell, the cell door is locked, and a general registration is conducted.",
+      "item4": "13.4 The social worker shall present the prisoner with a proposal form regarding employment and participation in training other than compulsory training, and the prisoner shall sign whether they agree or not.",
+      "item5": "13.5 Prisoners who refuse to participate in labor and training being conducted according to the schedule shall be placed under guard and security control at a designated point, and the responsible social worker shall conduct a conversation and presentation on the importance of participating in training and labor, and the legal opportunities provided by law.",
+      "item6": "13.6 The prison cell door shall be kept locked, and prisoners shall be allowed into the rest room during rest times. The head of the prison shall decide whether to keep the prison cell door locked during personal free time.",
+      "item7": "13.7 For the purpose of protecting the prisoner's health and preventing lack of movement, exercise shall be performed for at least 30 minutes every day."
+    },
+    "security": {
+      "title": "RECORD ON INTRODUCING THE PROCEDURE FOR ESTABLISHING A SECURITY CIRCLE TO ENSURE THE SAFETY OF PRISON OFFICIALS TO THE PRISONER\n\nTwo. Size of the official's security circle and its establishment",
+      "item1": "2.1 The official's security circle is at a distance of 2 meters around them.",
+      "item2": "2.2 The security zone of the prison and the workplace /office/ where the official performs their duties belong equally to the security circle.",
+      "item3": "2.3 If an official has to interact closely with a prisoner due to work requirements, they shall ensure security and warn the prisoner in advance.",
+      "item4": "2.4 When arresting an escaped prisoner or escorting a prisoner under guard, the provisions of 2.3 of this regulation shall be followed.",
+      "item5": "2.5 When conducting general and control registration, inspection, search, and general activities involving prisoners, measures to ensure the official's safety shall be taken, and activities shall be organized after restricting movement.",
+      "item6": "2.6 Newly arrived prisoners at the prison shall be introduced to this regulation in advance, and if violated, they shall be informed of the measures to be taken as specified in Article 294 of the Law on Court Decision Enforcement, and they shall be required to sign and document it to be attached to their personal file.",
+      "violation": "Four. Responsibility to be borne by violators of the regulation",
+      "violation1": "4.1 If a prisoner enters the security circle without permission or violates the signs prohibiting movement, special means for individuals specified in Article 293 of the Law on Court Decision Enforcement or disciplinary punishment specified in Article 227 shall be imposed depending on the nature of the violation."
+    },
+    "movement": {
+      "title": "Twelve. Prisoner location, movement direction (From the internal rules of the prison)",
+      "item1": "12.1 The location, movement, and direction of prisoners shall be approved by the order of the head of the prison and followed.",
+      "item2": "12.2 The prisoner's \"location\" means keeping the prisoner in a specific place indicated in the prison schedule.",
+      "item3": "12.3 Location can be determined by dividing into groups based on the number of prisoners, training, and labor areas.",
+      "item4": "12.4 The prisoner's \"movement\" refers to all activities from waking up in the morning according to the prison schedule, maintaining sanitation, eating, labor, participating in training and talks, short and long-term meetings, free time, to resting.",
+      "item5": "12.5 The permitted route that a prisoner can take in the living and production zones according to the prison schedule is called a \"direction\".",
+      "item6": "12.6 The direction of the prisoner's movement can be determined by groups or for each prisoner individually, taking into account their employment and level of correction and upbringing."
+    },
+    "discipline": {
+      "title": "Law on Court Decision Enforcement, Article 227. Disciplinary punishment imposed on prisoners",
+      "desc1": "227.1 If a prisoner violates laws and regulations, the regime and rules established in the prison, or the duties imposed by law, the following disciplinary punishments shall be imposed by the decision of the head of the prison:",
+      "item1": "227.1.1 deprive the right to short and long-term meetings or phone calls per day, month, quarter, and year for up to 3 months;",
+      "item2": "227.1.2 imprison in a disciplinary cell;",
+      "item3": "227.1.3 deduct the reward days granted for that month, quarter, or year.",
+      "desc2": "227.2 If there is sufficient reason to believe that the prisoner's action or inaction violating the internal rules of the prison has the nature of a crime, the head of the prison shall notify the prosecutor and transfer it to the police department in charge of the territory for investigation.",
+      "desc3": "227.3 It is prohibited to impose the punishments specified in 227.1 of this law simultaneously on a prisoner who has committed one disciplinary violation."
+    },
+    "badge": "Active law and regulation"
   }
 }
