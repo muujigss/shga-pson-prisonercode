@@ -5,7 +5,7 @@ const localesDir = 'd:\\projects\\New folder\\shga-pson-prisonercode\\i18n\\loca
 
 const mn_data = {
   legal: {
-    title: 'ШИНЭЭР ИРСЭН ХОРИГДОЛД ТАНИЛЦУУЛАХ ХУУЛЬ, ЖУРАМ',
+    title: 'Хоригдлын эрх зүйн мэдээлэл',
     intro: 'Шүүхийн шийдвэр гүйцэтгэх тухай Монгол улсын хуулийн 210-р зүйл  хоригдлын эрх, 211-р зүйлд хоригдлын үүрэг болон  бусад хууль тогтоомж, журмын заалтыг тус тус  уншуулж танилцууллаа.',
     rights: {
       title: '210.1 Хоригдол дараах эрх эдэлнэ.',
@@ -127,7 +127,7 @@ const mn_data = {
 
 const en_data = {
   legal: {
-    title: 'LAWS AND REGULATIONS TO BE INTRODUCED TO NEW PRISONERS',
+    title: 'Prisoner Legal Information',
     intro: 'Introduced Article 210 of the Law of Mongolia on Court Decision Enforcement regarding prisoner rights, Article 211 on prisoner duties, and other related laws and regulations.',
     rights: {
       title: '210.1 A prisoner shall enjoy the following rights:',
