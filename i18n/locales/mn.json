@@ -2,11 +2,14 @@
   "login": {
     "title": "Хоригдогчийн мэдээлэл",
     "subtitle": "Нэг удаагийн кодоо оруулж нэвтэрнэ үү",
+    "registerNum": "Регистрийн дугаар оруулна уу",
     "errorLength": "6 оронтой код оруулна уу",
     "errorInvalid": "Код буруу эсвэл идэвхгүй байна",
     "placeholder": "6 оронтой нэг удаагийн код",
     "buttonLoading": "Нэвтэрч байна...",
-    "buttonSubmit": "Нэвтрэх"
+    "buttonSubmit": "Нэвтрэх",
+    "typeFinger": "Хурууны хээгээр",
+    "typeCode": "Кодоор"
   },
   "dashboard": {
     "menu": {

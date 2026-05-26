@@ -2,11 +2,14 @@
   "login": {
     "title": "Prisoner Information",
     "subtitle": "Please enter your one-time code to login",
+    "registerNum": "Please enter your registration number",
     "errorLength": "Please enter a 6-digit code",
     "errorInvalid": "Invalid or inactive code",
     "placeholder": "6-digit one-time code",
     "buttonLoading": "Logging in...",
-    "buttonSubmit": "Login"
+    "buttonSubmit": "Login",
+    "typeFinger": "By fingerprint",
+    "typeCode": "By code"
   },
   "dashboard": {
     "menu": {

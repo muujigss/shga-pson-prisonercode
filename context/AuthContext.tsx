@@ -15,7 +15,7 @@ interface PrisonerInfo {
 interface AuthContextType {
   prisoner: PrisonerInfo | null;
   isLoading: boolean;
-  login: (code: string) => Promise<void>;
+  login: (registerNum: string, code?: string | null, fingerImage?: string | null) => Promise<void>;
   logout: () => void;
 }
 
@@ -50,10 +50,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const login = useCallback(async (code: string) => {
+  const login = useCallback(async (registerNum: string, code?: string | null, fingerImage?: string | null) => {
     const res = await api('/prisoner-code-auth/login', {
       method: 'POST',
-      body: JSON.stringify({ code }),
+      body: JSON.stringify({ code, registerNum, fingerImage }),
     });
 
     setToken(res.access_token);

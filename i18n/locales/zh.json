@@ -2,11 +2,14 @@
   "login": {
     "title": "囚犯信息",
     "subtitle": "请输入您的一次性代码以登录",
+    "registerNum": "请输入您的登记号",
     "errorLength": "请输入6位数的代码",
     "errorInvalid": "代码无效或未激活",
     "placeholder": "6位数一次性代码",
     "buttonLoading": "登录中...",
-    "buttonSubmit": "登录"
+    "buttonSubmit": "登录",
+    "typeFinger": "按指纹",
+    "typeCode": "按代码"
   },
   "dashboard": {
     "menu": {

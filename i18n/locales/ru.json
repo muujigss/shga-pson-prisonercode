@@ -2,11 +2,14 @@
   "login": {
     "title": "Информация о заключенном",
     "subtitle": "Введите одноразовый код для входа",
+    "registerNum": "Пожалуйста, введите регистрационный номер",
     "errorLength": "Пожалуйста, введите 6-значный код",
     "errorInvalid": "Неверный или неактивный код",
     "placeholder": "6-значный одноразовый код",
     "buttonLoading": "Вход...",
-    "buttonSubmit": "Войти"
+    "buttonSubmit": "Войти",
+    "typeFinger": "По отпечатку пальца",
+    "typeCode": "По коду"
   },
   "dashboard": {
     "menu": {
