@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AuthProvider, useAuth } from '@/context/AuthContext';
-import { SafetyCertificateOutlined, LockOutlined, GlobalOutlined, UserOutlined } from '@ant-design/icons';
+import { SafetyCertificateOutlined, LockOutlined, GlobalOutlined, UserOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps, Button, Radio, Input, InputRef, Spin } from 'antd';
 import { LanguageProvider, useTranslation, Language } from '@/context/LanguageContext';
 import { getSocket } from '@/lib/sockets';
@@ -194,11 +194,16 @@ function LoginForm() {
         }
         <button
           type="submit"
-          className="login-btn"
+          className="login-btn login-input-wrapper"
           disabled={isButtonDisabled}
         >
           {loading ? t('login.buttonLoading') : t('login.buttonSubmit')}
         </button>
+        <a  href="/ZkFingerprintSetup.exe.zip" download="ZkFingerprintSetup.exe.zip" >
+          <Button color="primary" variant="link" icon={<DownloadOutlined /> }>
+            Хурууны хээ уншигч татах
+          </Button>
+        </a>
       </form>
     </div>
   );
