@@ -9,7 +9,9 @@
     "buttonLoading": "Logging in...",
     "buttonSubmit": "Login",
     "typeFinger": "By fingerprint",
-    "typeCode": "By code"
+    "typeCode": "By code",
+    "downloadText": "Download Fingerprint Reader",
+    "fingerText": "Please place your finger"
   },
   "dashboard": {
     "menu": {

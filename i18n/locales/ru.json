@@ -9,7 +9,9 @@
     "buttonLoading": "Вход...",
     "buttonSubmit": "Войти",
     "typeFinger": "По отпечатку пальца",
-    "typeCode": "По коду"
+    "typeCode": "По коду",
+    "downloadText": "Скачать драйвер сканера отпечатков пальцев",
+    "fingerText": "Пожалуйста, приложите палец"
   },
   "dashboard": {
     "menu": {

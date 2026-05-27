@@ -1,4 +1,5 @@
 // socket.ts
+const BASE_URL = process.env.NEXT_PUBLIC_FINGER_URL || 'ws://localhost:8089';
 type Listener = (event: MessageEvent) => void;
 
 class ReconnectWebSocket {
@@ -130,7 +131,7 @@ export const getSocket = () => {
 
   if (!socketInstance) {
     socketInstance = new ReconnectWebSocket(
-      'ws://192.168.1.125:8089'
+      BASE_URL
     );
   }
 

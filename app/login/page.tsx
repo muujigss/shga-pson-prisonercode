@@ -166,7 +166,9 @@ function LoginForm() {
               {
                 !!fingerImage ? <img style={{ height: "100%", width: "100%", borderRadius: 8 }} src={`data:image/png;base64,${fingerImage}`} alt="img" /> :
                 connected ?
-                <div style={{ fontSize: 11, textAlign: 'center', fontWeight: 'bolder', color: '#9aa5b8' }}>Та хуруугаа дарна уу</div> : <Spin />
+                <div style={{ fontSize: 11, textAlign: 'center', fontWeight: 'bolder', color: '#9aa5b8' }}>
+                  {t("login.fingerText")}
+                </div> : <Spin />
               }
             </div>
           </div> :
@@ -201,7 +203,7 @@ function LoginForm() {
         </button>
         <a  href="/ZkFingerprintSetup.exe.zip" download="ZkFingerprintSetup.exe.zip" >
           <Button color="primary" variant="link" icon={<DownloadOutlined /> }>
-            Хурууны хээ уншигч татах
+            {t('login.downloadText')}
           </Button>
         </a>
       </form>

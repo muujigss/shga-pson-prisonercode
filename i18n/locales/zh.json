@@ -9,7 +9,9 @@
     "buttonLoading": "登录中...",
     "buttonSubmit": "登录",
     "typeFinger": "按指纹",
-    "typeCode": "按代码"
+    "typeCode": "按代码",
+    "downloadText": "下载指纹阅读器",
+    "fingerText": "请按手指"
   },
   "dashboard": {
     "menu": {
