@@ -58,7 +58,9 @@
     "date": "日期",
     "spending": "支出",
     "income": "收入",
-    "balance": "余额"
+    "balance": "余额",
+    "accountNumber": "账户号码",
+    "currentBalance": "当前余额"
   },
   "offence": {
     "noData": "暂无数据",

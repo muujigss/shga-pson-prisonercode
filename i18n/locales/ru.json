@@ -58,7 +58,9 @@
     "date": "Дата",
     "spending": "Расход",
     "income": "Доход",
-    "balance": "Остаток"
+    "balance": "Остаток",
+    "accountNumber": "Номер счёта",
+    "currentBalance": "Текущий остаток"
   },
   "offence": {
     "noData": "Нет данных",

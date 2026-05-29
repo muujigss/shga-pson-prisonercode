@@ -58,7 +58,9 @@
     "date": "Date",
     "spending": "Spending",
     "income": "Income",
-    "balance": "Balance"
+    "balance": "Balance",
+    "accountNumber": "Account number",
+    "currentBalance": "Current balance"
   },
   "offence": {
     "noData": "No data available",

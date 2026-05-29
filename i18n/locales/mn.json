@@ -58,7 +58,9 @@
     "date": "Огноо",
     "spending": "Зарлага",
     "income": "Орлого",
-    "balance": "Үлдэгдэл"
+    "balance": "Үлдэгдэл",
+    "accountNumber": "Дансны дугаар",
+    "currentBalance": "Нийт үлдэгдэл"
   },
   "offence": {
     "noData": "Өгөгдөл байхгүй",
