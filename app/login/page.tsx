@@ -131,14 +131,14 @@ function LoginForm() {
           }}
           placement="bottomRight"
         >
-          <Button
+          {/*<Button
             icon={<GlobalOutlined />}
             type="text"
             style={{ color: "white" }}
           >
             {(items.find((item) => item?.key === language) as any)?.label ||
               "Монгол"}
-          </Button>
+          </Button>*/}
         </Dropdown>
       </div>
       <form className="login-card" onSubmit={handleSubmit}>
