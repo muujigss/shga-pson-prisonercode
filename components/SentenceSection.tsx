@@ -41,7 +41,6 @@ export default function SentenceSection() {
     return <div className="empty-state">{t('sentence.noData')}</div>;
   }
 
-  // Admin (type=11) Ялын тооцоотой ижил логик.
   const jailYears = Number(data.JAIL_YEARS || 0);
   const jailMonths = Number(data.JAIL_MONTHS || 0);
   const jailDays = Number(data.JAIL_DAYS || 0);
@@ -51,13 +50,11 @@ export default function SentenceSection() {
   const isCalendar = calcTypeId !== 1;
   const start = data.JAIL_START_DATE ? dayjs(data.JAIL_START_DATE) : null;
 
-  // Хоригдох хугацаа — нормчилсон (30 хоног = 1 сар, 12 сар = 1 жил).
   const normJailDays = jailDays % 30;
   const normJailMonthsRaw = jailMonths + Math.floor(jailDays / 30);
   const normJailMonths = normJailMonthsRaw % 12;
   const normJailYears = jailYears + Math.floor(normJailMonthsRaw / 12);
 
-  // Ял эдэлж дуусах огноо
   let endDateStr = '';
   if (start) {
     const bY = Math.floor(bonusDays / 360);
@@ -91,7 +88,6 @@ export default function SentenceSection() {
     endDateStr = end.format('YYYY-MM-DD');
   }
 
-  // Биеэр эдэлсэн ← Ял эхлэн тоолох огноо → өнөөдөр
   const now = dayjs();
   let served = { y: 0, m: 0, d: 0 };
   if (start) {
@@ -156,7 +152,7 @@ export default function SentenceSection() {
           <div className="info-card-value">{dur(bonus)}</div>
         </div>
 
-        <div className="info-card">
+        {/* <div className="info-card">
           <div className="info-card-icon red"><FieldTimeOutlined /></div>
           <div className="info-card-label">Биеэр эдэлсэн</div>
           <div className="info-card-value">{dur(served)}</div>
@@ -166,7 +162,7 @@ export default function SentenceSection() {
           <div className="info-card-icon orange"><FieldTimeOutlined /></div>
           <div className="info-card-label">Нийт эдэлсэн</div>
           <div className="info-card-value">{dur(totalServed)}</div>
-        </div>
+        </div> */}
 
         <div className="info-card">
           <div className="info-card-icon red"><CalendarOutlined /></div>
@@ -174,11 +170,11 @@ export default function SentenceSection() {
           <div className="info-card-value red">{endDateStr || '—'}</div>
         </div>
 
-        <div className="info-card">
+        {/* <div className="info-card">
           <div className="info-card-icon blue"><ClockCircleOutlined /></div>
           <div className="info-card-label">Үлдсэн хугацаа</div>
           <div className="info-card-value">{dur(remain)}</div>
-        </div>
+        </div> */}
       </div>
 
       <div className="legal-section" style={{ marginTop: 16 }}>
