@@ -116,9 +116,13 @@ function LoginForm() {
   const isCodeValid = code.length === 6;
   const isFingerValid = !!fingerImage;
   const isRegisterNumValid = !!registerNum;
+  // Кодоор нэвтрэхэд регистр ШААРДАХГҮЙ — код өөрөө хоригдлыг цор ганцаар заана
+  // (PRI_PRISONER_CODE.CODE дээр unique). Хурууны хээнд регистр заавал, учир нь
+  // ХУР-ын баталгаажуулалт регистрээр явна.
   const canSubmit =
-    isRegisterNumValid &&
-    (selectedType === "CODE" ? isCodeValid : isFingerValid);
+    selectedType === "CODE"
+      ? isCodeValid
+      : isRegisterNumValid && isFingerValid;
   const isButtonDisabled = loading || !canSubmit;
   return (
     <div className="login-container relative">
@@ -157,33 +161,38 @@ function LoginForm() {
             size="large"
             value={selectedType}
             onChange={(e) => {
+              const next = e.target.value;
               setCode("");
               setFingerImage(null);
-              setSelectedType(e.target.value);
+              setError("");
+              // Горим солиход хуучин утга үлдээхгүй — кодоор нэвтрэхэд регистр
+              // серверт огт илгээгдэхгүй байх ёстой.
+              setRegisterNum("");
+              setSelectedType(next);
+              setTimeout(
+                () =>
+                  next === "CODE"
+                    ? otpRef.current?.focus()
+                    : registerRef.current?.focus(),
+                0,
+              );
             }}
           />
         </div>
         {error && <div className="login-error">{error}</div>}
-        <div className="login-input-wrapper">
-          <Input
-            ref={registerRef}
-            placeholder={t("login.registerNum")}
-            prefix={<UserOutlined />}
-            size="large"
-            value={registerNum}
-            onChange={handleRegisterNumChange}
-          />
-          {/* <input
-            ref={registerRef}
-            type="text"
-            placeholder={t('login.placeholder')}
-            value={registerNum}
-            onChange={handleRegisterNumChange}
-            maxLength={20}
-            autoComplete="off"
-          />
-          <UserOutlined className="login-input-icon" /> */}
-        </div>
+        {/* Регистр зөвхөн хурууны хээний горимд. Кодоор нэвтрэхэд хэрэггүй. */}
+        {selectedType === "FINGER" && (
+          <div className="login-input-wrapper">
+            <Input
+              ref={registerRef}
+              placeholder={t("login.registerNum")}
+              prefix={<UserOutlined />}
+              size="large"
+              value={registerNum}
+              onChange={handleRegisterNumChange}
+            />
+          </div>
+        )}
         {selectedType === "FINGER" ? (
           <div
             className="login-input-wrapper"
