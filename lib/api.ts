@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 
 const TOKEN_NAME = 'prisoner-token';
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+export const API_URL = BASE_URL;
 
 export async function api(endpoint: string, options?: RequestInit): Promise<any> {
   const url = `${BASE_URL}${endpoint}`;
@@ -27,7 +28,9 @@ export async function api(endpoint: string, options?: RequestInit): Promise<any>
     if (typeof window !== 'undefined' && window.location.pathname !== '/login') {
       window.location.href = '/login';
     }
-    throw new Error('Unauthorized');
+    // Нэвтрэх үеийн шалтгааныг (регистр буруу, ХУР, бүртгэлгүй уншигч) хэрэглэгчид харуулна
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.message || 'Unauthorized');
   }
 
   const data = await res.json();

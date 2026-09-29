@@ -39,16 +39,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     Cookies.set('prisonercode-lang', lang, { expires: 365 });
   };
 
+  const lookup = (dict: unknown, keys: string[]): string | undefined => {
+    let current = dict;
+    for (const key of keys) {
+      if (!current || typeof current !== 'object') return undefined;
+      current = (current as Record<string, unknown>)[key];
+    }
+    return current === undefined ? undefined : (current as string);
+  };
+
+  // Сонгосон хэлэнд орчуулга байхгүй бол Монгол текст рүү буцна
   const t = (path: string): string => {
     const keys = path.split('.');
-    let current: any = dictionaries[language];
-    for (const key of keys) {
-      if (current[key] === undefined) {
-        return path; // Fallback to path if not found
-      }
-      current = current[key];
-    }
-    return current as string;
+    return lookup(dictionaries[language], keys) ?? lookup(dictionaries.mn, keys) ?? path;
   };
 
   const tDynamic = (namespace: string, key: string, fallback: string): string => {

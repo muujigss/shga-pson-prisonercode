@@ -15,7 +15,7 @@ interface PrisonerInfo {
 interface AuthContextType {
   prisoner: PrisonerInfo | null;
   isLoading: boolean;
-  login: (registerNum: string, code?: string | null, fingerImage?: string | null) => Promise<void>;
+  login: (registerNum: string, code?: string | null, fingerImage?: string | null, serial?: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -50,10 +50,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const login = useCallback(async (registerNum: string, code?: string | null, fingerImage?: string | null) => {
+  // serial: хурууны хээг уншсан уншигчийн serial (backend бүртгэлтэй эсэхийг шалгана)
+  const login = useCallback(async (registerNum: string, code?: string | null, fingerImage?: string | null, serial?: string) => {
     const res = await api('/prisoner-code-auth/login', {
       method: 'POST',
-      body: JSON.stringify({ code, registerNum, fingerImage }),
+      body: JSON.stringify({ code, registerNum, fingerImage, serial }),
     });
 
     setToken(res.access_token);

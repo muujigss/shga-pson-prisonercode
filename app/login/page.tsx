@@ -17,14 +17,17 @@ import {
   Radio,
   Input,
   InputRef,
-  Spin,
 } from "antd";
 import {
   LanguageProvider,
   useTranslation,
   Language,
 } from "@/context/LanguageContext";
-import { getSocket } from "@/lib/sockets";
+import { useFingerprint } from "@/lib/useFingerprint";
+import { useAgentRelease } from "@/lib/useAgentRelease";
+import { API_URL } from "@/lib/api";
+import { FINGER_AGENT_DOWNLOAD_PATH } from "@/lib/fingerprint";
+import FingerprintPanel from "@/components/FingerprintPanel";
 import type { CheckboxGroupProps } from "antd/es/checkbox";
 import { OTPRef } from "antd/es/input/OTP";
 function LoginForm() {
@@ -38,8 +41,11 @@ function LoginForm() {
   const router = useRouter();
   const { login } = useAuth();
   const { t, language, setLanguage } = useTranslation();
-  const [connected, setConnected] = useState(false);
-  const [fingerImage, setFingerImage] = useState<string | null>(null);
+  // Хурууны хээний төлөв агентын event-ээс гарна (docs/CLIENT_GUIDE.md)
+  const fp = useFingerprint();
+  // Backend-д байршуулсан хамгийн сүүлийн уншигчийн програм (байхгүй бол public дахь файл)
+  const { release } = useAgentRelease();
+  const fingerImage = fp.image;
   const [selectedType, setSelectedType] = useState<string>("FINGER");
   const options: CheckboxGroupProps<string>["options"] = [
     { label: t("login.typeFinger"), value: "FINGER" },
@@ -47,33 +53,6 @@ function LoginForm() {
   ];
   useEffect(() => {
     registerRef.current?.focus();
-    const socket = getSocket();
-    if (!socket) return;
-    const removeMessage = socket.addMessageListener((message) => {
-      try {
-        const evt = JSON.parse(message.data);
-        if (evt.eventType === "FINGER_IMAGE") {
-          setFingerImage(evt.payload);
-        }
-      } catch (err) {
-        console.log("message error:", err);
-      }
-    });
-    const removeOpen = socket.addOpenListener(() => {
-      setConnected(true);
-      console.log("🟢 CONNECTED");
-    });
-    const removeClose = socket.addCloseListener(() => {
-      setFingerImage(null);
-      setConnected(false);
-      console.log("🔴 DISCONNECTED");
-    });
-    setConnected(socket.isConnected);
-    return () => {
-      removeMessage();
-      removeOpen();
-      removeClose();
-    };
   }, []);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,7 +64,12 @@ function LoginForm() {
     setError("");
 
     try {
-      await login(registerNum, code, fingerImage);
+      // Кодоор нэвтрэхэд хурууны хээ илгээхгүй (илгээвэл backend хурууны хээний урсгал руу орно)
+      if (selectedType === "FINGER") {
+        await login(registerNum, code, fingerImage, fp.imageSerial);
+      } else {
+        await login(registerNum, code, null);
+      }
       router.push("/dashboard");
     } catch (err: any) {
       setError(err?.message || t("login.errorInvalid"));
@@ -163,7 +147,7 @@ function LoginForm() {
             onChange={(e) => {
               const next = e.target.value;
               setCode("");
-              setFingerImage(null);
+              fp.clearImage();
               setError("");
               // Горим солиход хуучин утга үлдээхгүй — кодоор нэвтрэхэд регистр
               // серверт огт илгээгдэхгүй байх ёстой.
@@ -194,46 +178,8 @@ function LoginForm() {
           </div>
         )}
         {selectedType === "FINGER" ? (
-          <div
-            className="login-input-wrapper"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                width: 78.05,
-                border: "1px solid  #9aa5b8",
-                borderRadius: 8,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {!!fingerImage ? (
-                <img
-                  style={{ height: "100%", width: "100%", borderRadius: 8 }}
-                  src={`data:image/png;base64,${fingerImage}`}
-                  alt="img"
-                />
-              ) : connected ? (
-                <div
-                  style={{
-                    fontSize: 11,
-                    textAlign: "center",
-                    fontWeight: "bolder",
-                    color: "#9aa5b8",
-                  }}
-                >
-                  {t("login.fingerText")}
-                </div>
-              ) : (
-                <Spin />
-              )}
-            </div>
+          <div className="login-input-wrapper">
+            <FingerprintPanel fp={fp} release={release} />
           </div>
         ) : (
           <div className="login-input-wrapper">
@@ -266,8 +212,12 @@ function LoginForm() {
           {loading ? t("login.buttonLoading") : t("login.buttonSubmit")}
         </button>
         <a
-          href="/ZkFingerprintSetup.exe.zip"
-          download="ZkFingerprintSetup.exe.zip"
+          href={
+            release
+              ? `${API_URL}${FINGER_AGENT_DOWNLOAD_PATH}`
+              : "/ZkFingerprintSetup.exe.zip"
+          }
+          download={release?.fileName ?? "ZkFingerprintSetup.exe.zip"}
         >
           <Button color="primary" variant="link" icon={<DownloadOutlined />}>
             {t("login.downloadText")}
