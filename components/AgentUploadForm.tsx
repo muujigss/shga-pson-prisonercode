@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { Button, Input } from 'antd';
 import { CloudUploadOutlined, DownloadOutlined } from '@ant-design/icons';
+import { sha256 } from '@noble/hashes/sha2.js';
+import { hmac } from '@noble/hashes/hmac.js';
+import { bytesToHex, utf8ToBytes } from '@noble/hashes/utils.js';
 import { useTranslation } from '@/context/LanguageContext';
 import { API_URL } from '@/lib/api';
 import {
@@ -14,23 +17,15 @@ import { useAgentRelease } from '@/lib/useAgentRelease';
 
 const VERSION_PATTERN = /^\d{1,5}(\.\d{1,5}){1,3}$/;
 
-const toHex = (buf: ArrayBuffer) =>
-  Array.from(new Uint8Array(buf), (b) => b.toString(16).padStart(2, '0')).join('');
-
-// WebCrypto нь зөвхөн HTTPS эсвэл localhost дээр ажилладаг. Нууц үгийг сүлжээгээр илгээхгүй.
-function canUseWebCrypto() {
-  return typeof window !== 'undefined' && window.isSecureContext && !!window.crypto?.subtle;
-}
-
+// WebCrypto биш: хөтөч түүнийг HTTP (дотоод сүлжээний IP) дээр хаадаг.
+// Нууц үг сүлжээгээр дамжихгүй — зөвхөн HMAC гарын үсэг илгээгдэнэ.
 async function sha256Hex(file: File) {
-  return toHex(await crypto.subtle.digest('SHA-256', await file.arrayBuffer()));
+  return bytesToHex(sha256(new Uint8Array(await file.arrayBuffer())));
 }
 
 // Backend-тэй ижил: hex(HMAC-SHA256(secret, `${timestamp}.upload.${version}.${sha256}`))
-async function signUpload(secret: string, timestamp: string, version: string, sha256: string) {
-  const enc = new TextEncoder();
-  const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
-  return toHex(await crypto.subtle.sign('HMAC', key, enc.encode(`${timestamp}.upload.${version}.${sha256}`)));
+function signUpload(secret: string, timestamp: string, version: string, fileSha256: string) {
+  return bytesToHex(hmac(sha256, utf8ToBytes(secret), utf8ToBytes(`${timestamp}.upload.${version}.${fileSha256}`)));
 }
 
 export default function AgentUploadForm() {
@@ -52,22 +47,21 @@ export default function AgentUploadForm() {
     setFile(next);
     setFileSha('');
     setResult(null);
-    if (next && canUseWebCrypto()) setFileSha(await sha256Hex(next));
+    if (next) setFileSha(await sha256Hex(next));
   };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setResult(null);
-    if (!canUseWebCrypto()) return setResult({ ok: false, text: t('agentUpload.errInsecure') });
     if (!VERSION_PATTERN.test(trimmedVersion)) return setResult({ ok: false, text: t('agentUpload.errVersion') });
     if (!file) return setResult({ ok: false, text: t('agentUpload.errFile') });
     if (!secret) return setResult({ ok: false, text: t('agentUpload.errSecret') });
 
     setBusy(true);
     try {
-      const sha256 = fileSha || (await sha256Hex(file));
+      const fileSha256 = fileSha || (await sha256Hex(file));
       const timestamp = Math.floor(Date.now() / 1000).toString();
-      const signature = await signUpload(secret, timestamp, trimmedVersion, sha256);
+      const signature = signUpload(secret, timestamp, trimmedVersion, fileSha256);
       const form = new FormData();
       form.append('version', trimmedVersion);
       form.append('file', file, file.name);
