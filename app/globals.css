@@ -291,6 +291,158 @@ h4 { font-size: 1rem; }
   20%, 40%, 60%, 80% { transform: translateX(4px); }
 }
 
+/* Хурууны хээний хэсэг (login) */
+.fp-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.fp-visual {
+  position: relative;
+  width: 88px;
+  height: 110px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #fafbfd;
+  color: var(--color-text-muted);
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.fp-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fp-visual-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.fp-icon {
+  width: 46px;
+  height: 46px;
+}
+
+.fp-tone-primary { border-color: var(--color-primary); background: var(--color-primary-subtle); color: var(--color-primary); }
+.fp-tone-success { border-color: var(--color-info-green); background: var(--color-info-green-bg); color: var(--color-info-green); }
+.fp-tone-warning { border-color: var(--color-info-orange); background: var(--color-info-orange-bg); color: var(--color-info-orange); }
+.fp-tone-error { border-color: var(--color-info-red); background: var(--color-info-red-bg); color: var(--color-info-red); }
+
+.fp-tone-primary .fp-icon { animation: fpPulse 2s ease-in-out infinite; }
+
+@keyframes fpPulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp-tone-primary .fp-icon { animation: none; }
+}
+
+.fp-status {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 300px;
+}
+
+.fp-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.fp-title-warning { color: #b45309; }
+.fp-title-error { color: var(--color-error); }
+.fp-title-success { color: #15803d; }
+
+.fp-hint {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
+.fp-hint-error { color: var(--color-error); }
+
+.fp-serial {
+  font-variant-numeric: tabular-nums;
+  user-select: all;
+}
+
+.fp-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.fp-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-primary);
+  transition: background 0.2s;
+}
+
+.fp-dot.is-done { background: var(--color-primary); }
+
+.fp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.fp-update {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--color-info-orange-bg);
+  border: 1px solid #fcd9a0;
+}
+
+.fp-update-title { font-size: 0.82rem; font-weight: 600; color: #b45309; }
+.fp-update-versions { font-size: 0.75rem; color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }
+
+/* Уншигчийн програм байршуулах (/agent-upload) */
+.agent-upload-card { max-width: 460px; text-align: left; display: flex; flex-direction: column; gap: 18px; }
+.agent-upload-card .login-icon, .agent-upload-card .login-title, .agent-upload-card .login-subtitle { text-align: center; margin-bottom: 0; }
+.agent-upload-card .login-error { margin-bottom: 0; }
+
+.au-current {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+  padding: 14px 16px; border-radius: var(--radius-md);
+  background: var(--color-bg-subtle); border: 1px solid var(--color-border);
+}
+.au-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-muted); }
+.au-version { font-size: 1.4rem; font-weight: 700; color: var(--color-text); font-variant-numeric: tabular-nums; }
+.au-meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 0.8rem; }
+.au-meta dt { color: var(--color-text-muted); }
+.au-meta dd { margin: 0; color: var(--color-text-secondary); min-width: 0; }
+.au-hash { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.72rem; overflow-wrap: anywhere; }
+.au-empty { font-size: 0.85rem; color: var(--color-text-secondary); }
+.au-field { display: flex; flex-direction: column; gap: 6px; }
+.au-hint { font-size: 0.75rem; color: var(--color-text-muted); }
+.au-hint-warn { color: #b45309; }
+.au-file { font-size: 0.85rem; }
+.au-result { font-size: 0.82rem; padding: 8px 12px; border-radius: var(--radius-sm); }
+.au-result-ok { color: #15803d; background: var(--color-info-green-bg); }
+
 /* =======================================
    DASHBOARD LAYOUT
    ======================================= */
